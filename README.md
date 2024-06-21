@@ -1,4 +1,4 @@
-# **Trabajo Práctico Integrador - Aprendizaje Autómatico I
+# Trabajo Práctico Integrador - Aprendizaje Autómatico I
 
 ## Integrantes:
 -  Fontana, Gustavo
