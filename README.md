@@ -29,6 +29,7 @@ El trabajo tiene como objetivos principales:
 
 2-  **Carpeta de Scripts**:
 -  **Funciones y Modelos**: Scripts que contienen funciones para preprocesamiento de datos y definición de modelos de regresión y clasificación.
+-  **Entrenamiento del pipeline**: Scripts para entrenar los modelos de regresión y clasificación.
 -  **Despliegue de Aplicación**: Scripts para desplegar la aplicación de predicción utilizando Streamlit para cada modelo evaluado.
 
 3-  **Dataset**: El conjunto de datos utilizado, denominado weatherAUS.csv, que contiene registros climáticos de varias ciudades australianas.
