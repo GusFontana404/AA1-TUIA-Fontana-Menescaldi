@@ -12,7 +12,7 @@ if __name__ == "__main__":
     predict_pipeline = joblib.load('classification_pred_pipeline.joblib')
 
     # Titulo para la aplicación
-    st.title('RainTomorrow Predictions')
+    st.title('¿Llueve mañana?')
 
     # Entradas de usuario
     date_input = st.date_input('Date', value=pd.to_datetime('2024-06-25'))
@@ -74,10 +74,10 @@ if __name__ == "__main__":
     # Realizar la predicción utilizando el pipeline entrenado
     prediccion = predict_pipeline.predict(data_para_predecir)
 
-    if prediccion > 0.5:
-        prediccion = 'Yes'
+    if prediccion == 1:
+        prediccion = 'Llueve'
     else:
-        prediccion = 'No'
+        prediccion = 'No llueve'
 
     # Mostrar la predicción inversa
     st.write('Predicción:', prediccion)

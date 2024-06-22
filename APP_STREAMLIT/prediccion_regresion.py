@@ -12,7 +12,7 @@ if __name__ == "__main__":
     predict_pipeline = joblib.load('regression_pred_pipeline.joblib')
 
     # Titulo para la aplicación
-    st.title('RainfallTomorrow Predictions')
+    st.title('¿Cuánto llueve mañana')
 
     # Entradas de usuario
     date_input = st.date_input('Date', value=pd.to_datetime('2024-06-25'))
@@ -20,9 +20,9 @@ if __name__ == "__main__":
                                          'Melbourne', 'Dartmoor', 'Adelaide', 'MountGambier'])
     min_temp = st.slider('MinTemp', -8.0, 35.0, 25.0)
     max_temp = st.slider('MaxTemp', 4.0, 46.5, 25.0)
-    rainfall = st.slider('Rainfall', 0.0, 119.0, 0.0)
-    evaporation = st.slider('Evaporation', 0.0, 86.5, 12.0)
-    sunshine = st.slider('Sunshine', 0.0, 15.0, 12.0)
+    rainfall = st.slider('Rainfall', 0.0, 119.0, 0.5)
+    evaporation = st.slider('Evaporation', 0.0, 90.0, 25.0)
+    sunshine = st.slider('Sunshine', 0.0, 15.0, 5.0)
     wind_gust_dir = st.selectbox('WindGustDir', ['SSW', 'S', 'SE', 'NNE', 'WNW', 'N', 'ENE', 'NE', 'E', 'SW', 'W',
                                                  'WSW', 'NNW', 'ESE', 'SSE', 'NW'])
     wind_gust_speed = st.slider('WindGustSpeed', 8.1, 122.5, 5.0)
@@ -30,16 +30,16 @@ if __name__ == "__main__":
                                               'WSW', 'NNW', 'ESE', 'SSE', 'NW'])
     wind_dir3pm = st.selectbox('WindDir3pm', ['SSW', 'S', 'SE', 'NNE', 'WNW', 'N', 'ENE', 'NE', 'E', 'SW', 'W',
                                               'WSW', 'NNW', 'ESE', 'SSE', 'NW'])
-    wind_speed9am = st.slider('WindSpeed9am', 0.0, 70.5, 6.0)
-    wind_speed3pm = st.slider('WindSpeed3pm', 0.0, 80.0, 20.0)
-    humidity9am = st.slider('Humidity9am', 5.0, 100.5, 20.0)
-    humidity3pm = st.slider('Humidity3pm', 5.0, 120.0, 13.0)
-    pressure9am = st.slider('Pressure9am', 900.1, 1200.5, 1000.0)
+    wind_speed9am = st.slider('WindSpeed9am', 0.0, 70.0, 35.0)
+    wind_speed3pm = st.slider('WindSpeed3pm', 0.0, 80.0, 35.0)
+    humidity9am = st.slider('Humidity9am', 5.0, 100.5, 55.0)
+    humidity3pm = st.slider('Humidity3pm', 5.0, 120.0, 60.0)
+    pressure9am = st.slider('Pressure9am', 900.0, 1200.0, 1000.0)
     pressure3pm = st.slider('Pressure3pm', 900.0, 1300.0, 1000.0)
-    cloud9am = st.slider('Cloud9am', 0.0, 10.0, 2.0)
+    cloud9am = st.slider('Cloud9am', 0.0, 10.0, 3.0)
     cloud3pm = st.slider('Cloud3pm', 0.0, 10.0, 5.0)
-    temp9am = st.slider('Temp9am', -2.1, 40.5, 26.0)
-    temp3pm = st.slider('Temp3pm', 1.0, 50.0, 35.0)
+    temp9am = st.slider('Temp9am', -2.0, 41.0, 18.0)
+    temp3pm = st.slider('Temp3pm', 1.0, 50.0, 23.0)
     rain_today = st.selectbox('RainToday', ['Yes', 'No'])
 
     # Preparar los datos para la predicción
@@ -74,5 +74,5 @@ if __name__ == "__main__":
     # Realizar la predicción utilizando el pipeline entrenado
     prediccion = predict_pipeline.predict(data_para_predecir)
 
-    # Mostrar la predicción inversa
-    st.write('Predicción:', prediccion)
+    # Mostrar la predicción 
+    st.write('Predicción(m3):', prediccion[0].round(0))
